@@ -62,7 +62,7 @@
                     <a asp-action="Delete" asp-route-id="@item.Ticker" class="badge badge-warning">Delete</a>
                 </td>
                 <td>
-                    <!-- AddStockToPortfolio Form -->
+                    <!-- AddStockToPortfolio fform -->
                     <form asp-controller="Portfolio"  asp-action="AddStockToPortfolio" method="post">
                         <input type="hidden" name="Ticker" value="@item.Ticker" />
                         <input type="number" name="AverageCostPerShare" class="form-control form-control-sm" step="0.01" placeholder="Cost per share" required />

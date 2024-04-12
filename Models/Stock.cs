@@ -11,7 +11,7 @@ namespace DividendTracker.Models
         public virtual Dividend Dividend { get; set; } // added for dash
         public string CompanyName { get; set; }
         public string Sector { get; set; }
-        // This collection holds the related UserPortfolio entries
+
         public virtual ICollection<UserPortfolio> UserPortfolios { get; set; }
     }
 }

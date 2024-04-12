@@ -15,18 +15,15 @@ namespace DividendTracker.Models
         public DbSet<Dividend> Dividends { get; set; }
         public DbSet<UserPortfolio> UserPortfolios { get; set; }
 
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserPortfolio>()
-                .HasOne(up => up.Stock) // Specifies that UserPortfolio has one Stock
-                .WithMany(s => s.UserPortfolios) // Specifies that a Stock can have many UserPortfolios
-                .HasForeignKey(up => up.Ticker); // Specifies that the foreign key is the Ticker property
+                .HasOne(up => up.Stock)
+                .WithMany(s => s.UserPortfolios) 
+                .HasForeignKey(up => up.Ticker); 
 
             modelBuilder.ApplyConfiguration(new StockConfiguration());
             modelBuilder.ApplyConfiguration(new DividendConfiguration());
-
             // add the other configs here for the otehr tables.
             base.OnModelCreating(modelBuilder);
         }

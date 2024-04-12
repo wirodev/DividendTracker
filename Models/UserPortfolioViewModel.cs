@@ -10,6 +10,6 @@
         public decimal CurrentStockPrice { get; set; }
         public decimal DividendYield { get; set; }
         public decimal YieldOnCost { get; set; }
-        public decimal TotalDividend => DividendAmount * AmountOfSharesOwned; // New property for Total Dividend
+        public decimal TotalDividend => DividendAmount * AmountOfSharesOwned; // new property for Total Dividend
     }
 }

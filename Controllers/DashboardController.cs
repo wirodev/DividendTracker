@@ -15,21 +15,20 @@ namespace DividendTracker.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // Fetch UserPortfolio data
+            // fetch UserPortfolio data
             var userPortfolios = await _context.UserPortfolios
-                .Include(up => up.Stock) // Ensure this navigation property exists in your UserPortfolio class
-                .ThenInclude(stock => stock.Dividend) // Eagerly load the Dividend
+                .Include(up => up.Stock) 
+                .ThenInclude(stock => stock.Dividend) 
                 .ToListAsync();
 
-            // Calculate total dividend
-            //var totalDividend = userPortfolios.Sum(up => up.Stock.Dividend.DividendAmount * up.AmountOfSharesOwned);
+            // calculate total dividend
             var totalDividend = userPortfolios
                 .Where(up => up.Stock != null && up.Stock.Dividend != null) // Check for null
                 .Sum(up => up.Stock.Dividend.DividendAmount * up.AmountOfSharesOwned);
 
 
 
-            // Calculate dividend yield and yield on cost for each stock and average them
+            // calculate dividend yield and yield on cost for each stock and average them
             var totalValue = userPortfolios.Sum(up => up.AverageCostPerShare * up.AmountOfSharesOwned);
             var totalDividendYield = userPortfolios.Sum(up => up.Stock.Dividend.DividendAmount / up.Stock.Dividend.CurrentStockPrice) / userPortfolios.Count;
             var totalYieldOnCost = userPortfolios.Sum(up => up.Stock.Dividend.DividendAmount / up.AverageCostPerShare) / userPortfolios.Count;
