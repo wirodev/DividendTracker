@@ -17,7 +17,7 @@ namespace DividendTracker.Controllers
         {
             // fetch UserPortfolio data
             var userPortfolios = await _context.UserPortfolios
-                .Include(up => up.Stock) 
+                .Include(up => up.Stock) // changed from stock to ticker
                 .ThenInclude(stock => stock.Dividend) 
                 .ToListAsync();
 

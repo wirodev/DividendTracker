@@ -9,7 +9,7 @@ namespace DividendTracker.Models
         public int UserPortfolioId { get; set; }
 
         [Required]
-        [ForeignKey("Stock")]
+        //[ForeignKey("Stock")]
         public string Ticker { get; set; }
 
         public virtual Stock Stock { get; set; } 
