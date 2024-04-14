@@ -1,11 +1,15 @@
 ﻿namespace DividendTracker.Models
 {
-    public class UserPortfolioViewModel
+    public class UserPortfolioInputViewModel
     {
         public string Ticker { get; set; }
-        public string CompanyName { get; set; }
         public decimal AverageCostPerShare { get; set; }
         public int AmountOfSharesOwned { get; set; }
+
+    }
+    public class UserPortfolioViewModel : UserPortfolioInputViewModel
+    {
+        public string CompanyName { get; set; }
         public decimal DividendAmount { get; set; }
         public decimal CurrentStockPrice { get; set; }
         public decimal DividendYield { get; set; }
